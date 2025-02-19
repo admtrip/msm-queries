@@ -19,3 +19,4 @@ class Movie < ApplicationRecord
 
   validates :title, :description, :year, :duration, :director, presence: true
 end
+

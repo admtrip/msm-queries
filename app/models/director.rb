@@ -12,7 +12,6 @@
 #
 class Director < ApplicationRecord
   has_many :movies, dependent: :destroy
-  
-  validates :name, presence: true
-end
 
+  validates :name, :dob, presence: true
+end
