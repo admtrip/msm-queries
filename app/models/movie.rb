@@ -13,4 +13,9 @@
 #  director_id :integer
 #
 class Movie < ApplicationRecord
+  belongs_to :director
+  has_many :characters, dependent: :destroy
+  has_many :actors, through: :characters
+
+  validates :title, :description, :year, :duration, :director, presence: true
 end

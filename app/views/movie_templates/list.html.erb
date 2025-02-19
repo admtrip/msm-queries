@@ -1,6 +1,6 @@
-<h1> List of all movies </h1>
+<h1>List of Movies</h1>
 
-<table>
+<table border="1">
   <tr>
     <th>ID</th>
     <th>Image</th>
@@ -9,23 +9,21 @@
     <th>Director</th>
     <th></th>
   </tr>
+
+  <% @movies.each do |a_movie| %>
+    <tr>
+      <td><%= a_movie.id %></td>
+      <td>
+        <% if a_movie.image.present? %>
+          <img src="<%= a_movie.image %>" width="100">
+        <% end %>
+      </td>
+      <td><%= a_movie.title %></td>
+      <td><%= a_movie.year %></td>
+      <td><%= a_movie.director&.name || 'Unknown Director' %></td>
+      <td>
+        <a href="/movies/<%= a_movie.id %>">Show details</a>
+      </td>
+    </tr>
+  <% end %>
 </table>
-
-<% Movie.all.each do |a_movie| %>
-  <tr>
-    <td><%= a_movie.id%></td>
-    <td><img src= "<%= a_movie.image%>" width="50"</td>
-    <td><%= a_movie.title%></td>
-    <td><%= a_movie.year%></td>
-    <td>
-      <% matching_records = Director.where ({ :id => a_movie.director_id })%>
-      <%=the_director = matching_records.at(0)%>
-
-      <%= the_director.name %>
-    </td>
-    <td>
-      <a href = "/movies/<%= movie.id %>">Show details</a>
-    </td>
-  </tr>
-
-<%end%>

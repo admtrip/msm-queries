@@ -1,0 +1,13 @@
+<h1><%= @the_movie.title %></h1>
+
+<p><strong>Description:</strong> <%= @the_movie.description %></p>
+<p><strong>Year:</strong> <%= @the_movie.year %></p>
+<p><strong>Duration:</strong> <%= @the_movie.duration %> minutes</p>
+<p><strong>Director:</strong> <%= @the_movie.director&.name || 'Unknown Director' %></p>
+
+<h2>Movie Image</h2>
+<% if @the_movie.image.present? %>
+  <img src="<%= @the_movie.image %>" width="200">
+<% end %>
+
+<a href="/movies">Go back to movies list</a>

@@ -11,4 +11,8 @@
 #  updated_at :datetime         not null
 #
 class Actor < ApplicationRecord
+  has_many :characters, dependent: :destroy
+  has_many :movies, through: :characters
+  
+  validates :name, :dob, presence: true
 end
